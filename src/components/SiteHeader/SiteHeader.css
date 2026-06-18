@@ -19,7 +19,7 @@
     color: #fff;
 }
 
-.site-header__logo:after {
+.site-header__logo::after {
     content: "";
     position: absolute;
     top: 14px;

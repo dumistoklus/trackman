@@ -2,11 +2,14 @@
   --text: #414141;
   --bg: #F5F5F5;
 
-  --font: Inter;
+  /** fonts */
+  --font: "Inter";
 
+  /** margins */
   --padding-l: 40px;
   --padding-m: 24px;
 
+  /** content */
   --max-content-width: 1720px;
 }
 
@@ -28,7 +31,7 @@ h1 {
   font-size: 22px;
   line-height: 1.4;
 
-  @media (max-width: 1024px) {
+  @media (width >= 1024px) {
     font-size: 15px;
     text-align: center;
   }

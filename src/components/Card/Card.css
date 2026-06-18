@@ -50,7 +50,6 @@
     padding: 4px 8px;
     display: flex;
     gap: 4px;
-    vertical-align: center;
 }
 
 .card__info {
@@ -62,7 +61,7 @@
 }
 
 .card--editable:hover .card__info {
-    padding-right: 52px
+    padding-right: 52px;
 }
 
 .card__place {
@@ -88,7 +87,7 @@
     overflow: hidden;
 }
 
-.card__meta-block:not(:first-child):before {
+.card__meta-block:not(:first-child)::before {
     content: '•';
     padding: 0 8px;
 }

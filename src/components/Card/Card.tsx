@@ -50,7 +50,7 @@ export function Card({ title, place, difficulty, par, featured, imageUrl, href, 
                     id: "delete",
                     icon: TrashIcon,
                     onClick: () => {
-                        // TOOD: implement the deletion
+                        // TODO: implement the deletion
                         console.log("delete");
                     },
                     title: "Delete",
