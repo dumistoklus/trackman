@@ -1,0 +1,42 @@
+.modal-delete-card {
+    border: 0;
+    background: #fff;
+    border-radius: 8px;
+    z-index: 1000;
+    padding: 0;
+}
+
+.modal-delete-card::backdrop {
+    background: #00000040;
+}
+
+.modal-delete-card__close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    border: 0;
+    height: 24px;
+    width: 24px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.modal-delete-card__header {
+    padding: 24px 60px 24px 24px;
+    border-bottom: 1px solid #F5F5F5;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.modal-delete-card__actions {
+    padding: 12px 24px;
+    border-top: 1px solid #F5F5F5;
+    display: flex;
+    gap: 16px;
+    justify-content: right;
+}
+
+.modal-delete-card__content {
+    padding: 24px 32px 24px 24px;
+    font-size: 13px;
+}

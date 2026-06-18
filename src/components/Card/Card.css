@@ -102,3 +102,7 @@
 .card--editable:hover .card__controls {
     display: block;
 }
+
+.card__button {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4) inset;
+}

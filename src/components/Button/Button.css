@@ -28,16 +28,28 @@
     background: #c75614;
 }
 
+.button--danger {
+    background: #EE1B34;
+    color: #fff;
+}
+
+.button--danger:hover {
+    background: #e11a32;
+}
+
+.button--danger:active {
+    background: #d61a30;
+}
+
 .button--secondary {
-    background: #fff;
+    background: #F5F5F5;
     color: #414141;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4) inset;
 }
 
 .button--secondary:hover {
-    background: #F5F5F5;
+    background: #eaeaea;
 }
 
 .button--secondary:active {
-    background: #eaeaea;
+    background: #dfdfdf;
 }

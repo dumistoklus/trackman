@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import "./Button.css";
 
 type Props = {
-    visualType: "primary" | "secondary";
+    visualType: "primary" | "secondary" | "danger";
     icon?: string;
 } & (React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>);
 

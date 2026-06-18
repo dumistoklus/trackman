@@ -1,63 +1,47 @@
 import { PageHeader } from "../../components/PageHeader/PageHeader.tsx";
 import { Button } from "../../components/Button/Button.tsx";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper.tsx";
-import { Card, type Props as CardProps } from "../../components/Card/Card.tsx";
+import { Card } from "../../components/Card/Card.tsx";
+import { ModalDeleteCard } from "../../components/ModalDeleteCard/ModalDeleteCard.tsx";
+import { useCallback, useRef } from "react";
+import { useCoursesContext } from "../../contexts/context.ts";
 
 import "./PageCoursesList.css";
 
-const cards: CardProps[] = [
-    {
-        id: "3",
-        title: "Pebble Beach Golf Links And King Charles Association",
-        place: "California, US",
-        difficulty: 4,
-        par: "72",
-        imageUrl: "/place1.webp",
-    },
-    {
-        id: "4",
-        title: "Albany",
-        place: "California, US",
-        difficulty: 4,
-        par: "72",
-        featured: true,
-        imageUrl: "/place2.jpg",
-    },
-    {
-        id: "5",
-        title: "Hidden Canyon",
-        place: "California, US",
-        difficulty: 4,
-        par: "72",
-        imageUrl: "/place3.jpg",
-    },
-    {
-        id: "6",
-        title: "St. Andrews",
-        place: "California, US",
-        difficulty: 4,
-        par: "72",
-        imageUrl: "/place4.avif",
-    },
-    {
-        id: "7",
-        title: "Asserbo",
-        place: "Copenhagen, Denmark",
-        difficulty: 3,
-        par: "72",
-        imageUrl: "/place5.jpg",
-    },
-    {
-        id: "8",
-        title: "Asserbo",
-        place: "Copenhagen, Denmark",
-        difficulty: 3,
-        par: "72",
-        imageUrl: "/place6.jpg",
-    },
-];
-
 export function PageCoursesList() {
+    const modalRef = useRef<HTMLDialogElement | null>(null);
+    const { data: courses, courseDeleteMutation } = useCoursesContext();
+    const deletingCourseIdRef = useRef<string | null>(null);
+
+    const onDeleteClicked = useCallback((id: string) => {
+        deletingCourseIdRef.current = id;
+        const dialog = modalRef.current;
+
+        if (dialog) {
+            dialog.showModal();
+        }
+    }, []);
+
+    const onDialogClose = useCallback(() => {
+        const dialog = modalRef.current;
+
+        if (dialog) {
+            dialog.close();
+        }
+    }, []);
+
+    const onConfirm = useCallback(() => {
+        const courseId = deletingCourseIdRef.current;
+        if (courseId) {
+            courseDeleteMutation.mutate(courseId);
+        }
+
+        const dialog = modalRef.current;
+        if (dialog) {
+            dialog.close();
+        }
+    }, [courseDeleteMutation]);
+
     return (
         <div className="page-courses-list">
             <PageHeader title="Courses" subtitle="Browse and add golf courses" />
@@ -68,11 +52,22 @@ export function PageCoursesList() {
                     </Button>
                 </div>
                 <div className="page-courses-list__cards">
-                    {cards.map((card) => (
-                        <Card {...card} key={card.id} href={`/courses/${card.id}`} />
-                    ))}
+                    {courses && courses.length > 0 ? (
+                        courses.map((course) => (
+                            <Card
+                                {...course}
+                                key={course.id}
+                                href={`/courses/${course.id}`}
+                                onDeleteClicked={onDeleteClicked}
+                            />
+                        ))
+                    ) : (
+                        <p>No courses found</p>
+                    )}
                 </div>
             </PageWrapper>
+
+            <ModalDeleteCard modalRef={modalRef} onClose={onDialogClose} onConfirm={onConfirm} />
         </div>
     );
 }

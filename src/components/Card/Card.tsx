@@ -10,17 +10,20 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import "./Card.css";
 
 export type Props = {
-    id: string;
-    href?: string;
-    title: string;
-    place: string;
-    difficulty: number;
-    par: string;
-    featured?: boolean;
-    imageUrl?: string;
-};
+    onDeleteClicked?: (id: string) => void;
+} & Course;
 
-export function Card({ title, place, difficulty, par, featured, imageUrl, href, id }: Props) {
+export function Card({
+    title,
+    place,
+    difficulty,
+    par,
+    featured,
+    imageUrl,
+    href,
+    id,
+    onDeleteClicked,
+}: Props) {
     const className = ["card"];
     if (href) {
         className.push("card--editable");
@@ -50,13 +53,12 @@ export function Card({ title, place, difficulty, par, featured, imageUrl, href, 
                     id: "delete",
                     icon: TrashIcon,
                     onClick: () => {
-                        // TODO: implement the deletion
-                        console.log("delete");
+                        onDeleteClicked?.(id);
                     },
                     title: "Delete",
                 },
             ] as DropdownItem[],
-        [id, navigate]
+        [id, navigate, onDeleteClicked]
     );
 
     useEffect(() => {
@@ -116,7 +118,12 @@ export function Card({ title, place, difficulty, par, featured, imageUrl, href, 
             {href && (
                 <div className="card__controls">
                     <Dropdown visible={isDropdownVisible} items={dropdownItems}>
-                        <Button visualType="secondary" icon={Dots} onClick={toggleDropdown} />
+                        <Button
+                            visualType="secondary"
+                            icon={Dots}
+                            onClick={toggleDropdown}
+                            className="card__button"
+                        />
                     </Dropdown>
                 </div>
             )}
