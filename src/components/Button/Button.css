@@ -1,0 +1,35 @@
+.button {
+    padding: 10px 24px;
+    line-height: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+    border: 0;
+}
+
+.button--icon-only {
+    padding: 10px;
+}
+
+.button--primary {
+    background: #ec691a;
+    color: #fff;
+}
+
+.button--primary:hover {
+    background: #d45c15;
+}
+
+.button--secondary {
+    background: #fff;
+    color: #414141;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4) inset;
+}
+
+.button--secondary:hover {
+    background: #F5F5F5;
+}

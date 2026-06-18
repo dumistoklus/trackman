@@ -1,0 +1,15 @@
+.page-courses-list {
+
+}
+
+.page-courses-list__actions {
+    text-align: right;
+    margin-bottom: 32px;
+}
+
+.page-courses-list__cards {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    justify-content: center;
+}

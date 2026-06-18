@@ -1,0 +1,19 @@
+.page-header {
+    background: #fff;
+}
+
+.page-header__content {
+    padding: var(--padding-m) var(--padding-l);
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+}
+
+.page-header__subtitle {
+    line-height: 1.4;
+    margin-top: 4px;
+    font-size: 13px;
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
+}
