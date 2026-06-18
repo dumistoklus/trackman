@@ -1,7 +1,11 @@
 import Star from "../../assets/star.svg";
 import Dots from "../../assets/dots.svg";
-import { Link } from "react-router";
+import EditIcon from "../../assets/edit.svg";
+import TrashIcon from "../../assets/trash.svg";
+import { Link, useNavigate } from "react-router";
 import { Button } from "../Button/Button.tsx";
+import { Dropdown, type DropdownItem } from "../Dropdown/Dropdown.tsx";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import "./Card.css";
 
@@ -16,15 +20,76 @@ export type Props = {
     imageUrl?: string;
 };
 
-export function Card({ title, place, difficulty, par, featured, imageUrl, href }: Props) {
+export function Card({ title, place, difficulty, par, featured, imageUrl, href, id }: Props) {
     const className = ["card"];
     if (href) {
         className.push("card--editable");
     }
 
+    const cardRef = useRef<HTMLDivElement | null>(null);
+    const linkRef = useRef<HTMLAnchorElement | null>(null);
+    const navigate = useNavigate();
+    const [isDropdownVisible, setDropdownVisibility] = useState(false);
+
+    function toggleDropdown() {
+        setDropdownVisibility((isDropdownVisible) => !isDropdownVisible);
+    }
+
+    const dropdownItems = useMemo(
+        () =>
+            [
+                {
+                    id: "edit",
+                    icon: EditIcon,
+                    onClick: () => {
+                        navigate(`/courses/${id}`);
+                    },
+                    title: "Edit",
+                },
+                {
+                    id: "delete",
+                    icon: TrashIcon,
+                    onClick: () => {
+                        // TOOD: implement the deletion
+                        console.log("delete");
+                    },
+                    title: "Delete",
+                },
+            ] as DropdownItem[],
+        [id, navigate]
+    );
+
+    useEffect(() => {
+        const container = cardRef.current;
+
+        if (container) {
+            const hideDropdown = () => setDropdownVisibility(false);
+
+            container.addEventListener("mouseleave", hideDropdown);
+
+            return () => {
+                container.removeEventListener("mouseleave", hideDropdown);
+            };
+        }
+    }, []);
+
+    useEffect(() => {
+        const link = linkRef.current;
+
+        if (link) {
+            const showDropdown = () => setDropdownVisibility(true);
+
+            link.addEventListener("focus", showDropdown);
+
+            return () => {
+                link.removeEventListener("focus", showDropdown);
+            };
+        }
+    }, []);
+
     return (
-        <div className={className.join(" ")}>
-            {href && <Link to={href} className="card__link" />}
+        <div className={className.join(" ")} ref={cardRef}>
+            {href && <Link to={href} className="card__link" ref={linkRef} />}
 
             <div className="card__wrapper">
                 {featured && (
@@ -48,9 +113,13 @@ export function Card({ title, place, difficulty, par, featured, imageUrl, href }
                 </div>
             </div>
 
-            <div className="card__controls">
-                <Button visualType="secondary" icon={Dots} />
-            </div>
+            {href && (
+                <div className="card__controls">
+                    <Dropdown visible={isDropdownVisible} items={dropdownItems}>
+                        <Button visualType="secondary" icon={Dots} onClick={toggleDropdown} />
+                    </Dropdown>
+                </div>
+            )}
         </div>
     );
 }

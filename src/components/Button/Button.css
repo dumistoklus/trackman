@@ -24,6 +24,10 @@
     background: #d45c15;
 }
 
+.button--primary:active {
+    background: #c75614;
+}
+
 .button--secondary {
     background: #fff;
     color: #414141;
@@ -32,4 +36,8 @@
 
 .button--secondary:hover {
     background: #F5F5F5;
+}
+
+.button--secondary:active {
+    background: #eaeaea;
 }
