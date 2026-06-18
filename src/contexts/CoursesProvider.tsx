@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { addCourse, deleteCourse, fetchCourses, updateCourse } from "../api/api.ts";
 import * as React from "react";
-import { CoursesDataContext } from "./context.ts";
+import { CoursesDataContext } from "./coursesContext.ts";
 
 const QUERY_KEY_COURSES = "COURSES";
 

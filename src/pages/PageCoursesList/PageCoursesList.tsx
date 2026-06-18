@@ -4,7 +4,7 @@ import { PageWrapper } from "../../components/PageWrapper/PageWrapper.tsx";
 import { Card } from "../../components/Card/Card.tsx";
 import { ModalDeleteCard } from "../../components/ModalDeleteCard/ModalDeleteCard.tsx";
 import { useCallback, useRef } from "react";
-import { useCoursesContext } from "../../contexts/context.ts";
+import { useCoursesContext } from "../../contexts/coursesContext.ts";
 
 import "./PageCoursesList.css";
 
