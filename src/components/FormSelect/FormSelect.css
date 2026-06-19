@@ -1,0 +1,109 @@
+.form-select {
+    position: relative;
+}
+
+.form-select__label {
+    position: absolute;
+    left: 13px;
+    top: 18px;
+    line-height: 14px;
+    pointer-events: none;
+    color: var(--text-tertiary-color);
+    font-size: 13px;
+    transition: all 0.1s ease-in-out;
+    user-select: none;
+}
+
+.form-select__input {
+    border: 1px solid var(--text-tertiary-color);
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    background: #fff;
+    line-height: 24px;
+    font-family: inherit;
+    font-size: 13px;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 48px;
+}
+
+select.form-select__input,
+.form-select__input::picker(select) {
+    appearance: base-select;
+}
+
+.form-select__input::picker(select) {
+    border: none;
+    padding: 4px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form-select__input:has(> option:checked) {
+    padding: 20px 12px 4px 12px;
+}
+
+.form-select__input:focus {
+    border-color: var(--brand-color);
+    box-shadow: 0 0 1px 0 var(--brand-color);
+    outline: none;
+}
+
+.form-select__input:has(> option:checked) + .form-select__label {
+    top: 8px;
+    font-size: 11px;
+}
+
+.form-select__input:has(> option[value="default"]:checked) {
+    color: var(--text-tertiary-color);
+}
+
+.form-select__input option[value="default"] {
+    display: none;
+}
+
+.form-select option {
+    padding: 8px;
+    gap: 8px;
+    display: flex;
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.form-select option::checkmark {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center;
+    content: '';
+    width: 16px;
+    height: 16px;
+}
+
+.form-select option:hover {
+    background: #FBFBFB;
+}
+
+.form-select option:checked {
+    background: #F5F5F5;
+}
+
+.form-select__input::picker-icon {
+    background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%227%22%20fill%3D%22none%22%20viewBox%3D%220%200%2012%207%22%3E%3Cpath%20fill%3D%22%23414141%22%20fill-rule%3D%22evenodd%22%20d%3D%22M.301%206.7a1%201%200%200%200%201.414%200L6%202.413l4.289%204.29a1%201%200%201%200%201.414-1.415L6.707.293a1%201%200%200%200-1.414%200L.301%205.285a1%201%200%200%200%200%201.414%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E") no-repeat center;
+    transition: all 0.1s ease-in-out;
+    width: 12px;
+    height: 12px;
+    rotate: 180deg;
+    content: '';
+    transform: translateY(2px);
+}
+
+.form-select__input:open::picker-icon {
+    rotate: 0deg;
+    transform: translateY(-2px);
+}

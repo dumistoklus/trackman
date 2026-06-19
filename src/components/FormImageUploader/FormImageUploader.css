@@ -1,0 +1,98 @@
+.form-image-uploader {
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+}
+
+.form-image-uploader--uploaded {
+    width: calc(50% - 16px);
+    max-width: 312px;
+
+    @media (width < 1024px) {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+.form-image-uploader:hover,
+.form-image-uploader:focus-visible {
+
+}
+
+.form-image-uploader--dragging {
+    outline: 2px dashed var(--brand-color);
+    outline-offset: -8px;
+}
+
+/* Let drag/click events fall through to the container, avoiding dragleave flicker. */
+.form-image-uploader > :not(.form-image-uploader__input) {
+    pointer-events: none;
+}
+
+.form-image-uploader__input {
+    appearance: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.form-image-uploader__title {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 8px;
+}
+
+.form-image-uploader__subtitle {
+    font-size: 11px;
+}
+
+.form-image-uploader__preview {
+    border-radius: 8px;
+    background: #fff;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.form-image-uploader__preview-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.form-image-uploader__preview-edit {
+    width: 32px;
+    height: 32px;
+    background: #F5F5F5;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-image-uploader__placeholder {
+    background: #E0E0E0;
+    height: 216px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-secondary-color);
+    flex-direction: column;
+}
+
+.form-image-uploader__input:hover + .form-image-uploader__placeholder {
+    background: #d6d6d6;
+}

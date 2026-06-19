@@ -1,0 +1,9 @@
+.error-state {
+    height: 120px;
+    padding: var(--padding-m) var(--padding-l);
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

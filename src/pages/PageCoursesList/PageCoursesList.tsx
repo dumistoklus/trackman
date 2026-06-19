@@ -1,16 +1,19 @@
-import { PageHeader } from "../../components/PageHeader/PageHeader.tsx";
+import { CoursesPageHeader } from "../../components/CoursesPageHeader/CoursesPageHeader.tsx";
 import { Button } from "../../components/Button/Button.tsx";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper.tsx";
 import { Card } from "../../components/Card/Card.tsx";
 import { ModalDeleteCard } from "../../components/ModalDeleteCard/ModalDeleteCard.tsx";
 import { useCallback, useRef } from "react";
-import { useCoursesContext } from "../../contexts/coursesContext.ts";
+import { useCourseListQuery } from "../../fetchers/useCourseListQuery.ts";
+import { useCourseDeleteMutation } from "../../fetchers/useCourseDeleteMutation.ts";
+import { ErrorState } from "../../components/ErrorState/ErrorState.tsx";
 
 import "./PageCoursesList.css";
 
 export function PageCoursesList() {
     const modalRef = useRef<HTMLDialogElement | null>(null);
-    const { data: courses, courseDeleteMutation } = useCoursesContext();
+    const { data: courses } = useCourseListQuery();
+    const courseDeleteMutation = useCourseDeleteMutation();
     const deletingCourseIdRef = useRef<string | null>(null);
 
     const onDeleteClicked = useCallback((id: string) => {
@@ -42,29 +45,42 @@ export function PageCoursesList() {
         }
     }, [courseDeleteMutation]);
 
+    const sortedCourses = courses
+        ? [...courses].sort((a, b) => {
+              if (a.featured) {
+                  return -1;
+              } else if (b.featured) {
+                  return 1;
+              }
+
+              return 0;
+          })
+        : [];
+
     return (
         <div className="page-courses-list">
-            <PageHeader title="Courses" subtitle="Browse and add golf courses" />
+            <CoursesPageHeader />
             <PageWrapper>
                 <div className="page-courses-list__actions">
                     <Button href="/courses/new" visualType="primary">
                         Create a course
                     </Button>
                 </div>
-                <div className="page-courses-list__cards">
-                    {courses && courses.length > 0 ? (
-                        courses.map((course) => (
+
+                {sortedCourses.length > 0 ? (
+                    <div className="page-courses-list__cards">
+                        {sortedCourses.map((course) => (
                             <Card
                                 {...course}
                                 key={course.id}
                                 href={`/courses/${course.id}`}
                                 onDeleteClicked={onDeleteClicked}
                             />
-                        ))
-                    ) : (
-                        <p>No courses found</p>
-                    )}
-                </div>
+                        ))}
+                    </div>
+                ) : (
+                    <ErrorState message="No courses found" />
+                )}
             </PageWrapper>
 
             <ModalDeleteCard modalRef={modalRef} onClose={onDialogClose} onConfirm={onConfirm} />

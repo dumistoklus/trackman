@@ -1,0 +1,13 @@
+.form-header {
+    margin-bottom: 24px;
+}
+
+.form-header__title {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.form-header__subtitle {
+    font-size: 13px;
+    color: var(--text-secondary-color);
+}

@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# Trackman demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## How to install
+```
+npm i
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## How to run
 ```
+npm run dev
+```
+
+## AI agents used
+- Claude for bug fixes.
+- Gemini for code completion.
+- MCP figma server to compare the design and the code.
+
+The code suggested by AI agents is not perfect, so it was reviewed and refined.
+Sometimes, agents find bugs that don't exist.
+Sometimes, they use code that has errors to justify errors elsewhere in the project.
+
+## What I would improve if I had more time
+- Accessibility
+- Write tests. Sadly, I didn't have enough time to write any unit tests.
+- Write Storybook.
+- Write visual regression tests.
+- Add stylelint.
+- Configure eslint to sort imports and add my favorite plugins.
+- Speak with the designer about the `Card` component and that we shouldn't put interactive elements into interactive elements.
+- Speak with the designer about the default state of the `Selector` component: it is not clear from the design when exactly it should be implemented. It seems that the default state is redundant.
+- Speak with the designer about the fact that the original file name won't be shown.
+- Add form validation. 
+- Add action reactions.
+- Add focus management to the `Dropdown` component.
+- Change `react-router` to TanStack Router. It is clear from the description that it is required to use code splitting by route, which is supported by TanStack Router out of the box.
+
+## Interesting places to see
+- `FormSelect` component and its styles: native implemnation.

@@ -11,9 +11,23 @@ type Props = {
 };
 
 export function ModalDeleteCard({ onClose, modalRef, onConfirm }: Props) {
+    function onKeyDown(e: React.KeyboardEvent<HTMLDialogElement>) {
+        if (e.key === "Enter") {
+            onConfirm();
+        }
+    }
+
     return (
-        <dialog className="modal-delete-card" onClose={onClose} ref={modalRef}>
-            <h2 className="modal-delete-card__header">Delete course</h2>
+        <dialog
+            aria-labelledby="modal-delete-card-header"
+            className="modal-delete-card"
+            onClose={onClose}
+            ref={modalRef}
+            onKeyDown={onKeyDown}
+        >
+            <h2 className="modal-delete-card__header" id="modal-delete-card-header">
+                Delete course
+            </h2>
             <div>
                 <button onClick={onClose} className="modal-delete-card__close">
                     <img src={CloseIcon} alt="Close Modal" />
@@ -27,10 +41,10 @@ export function ModalDeleteCard({ onClose, modalRef, onConfirm }: Props) {
             </div>
             <div className="modal-delete-card__actions">
                 <Button onClick={onClose} visualType="secondary">
-                    Close
+                    Cancel
                 </Button>
                 <Button onClick={onConfirm} visualType="danger">
-                    Confirm
+                    Delete
                 </Button>
             </div>
         </dialog>

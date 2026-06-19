@@ -1,5 +1,9 @@
 :root {
-  --text: #414141;
+  --brand-color: #ec691a;
+
+  --text-primary-color: #414141;
+  --text-secondary-color: #7B7B7B;
+  --text-tertiary-color: #A0A0A0;
   --bg: #F5F5F5;
 
   /** fonts */
@@ -15,9 +19,10 @@
 
 body {
   font-family: var(--font), sans-serif;
+  line-height: 1.4;
   margin: 0;
   background: var(--bg);
-  color: var(--text);
+  color: var(--text-primary-color);
 }
 
 h1,
@@ -29,9 +34,8 @@ h3 {
 h1 {
   font-weight: 700;
   font-size: 22px;
-  line-height: 1.4;
 
-  @media (width >= 1024px) {
+  @media (width < 1024px) {
     font-size: 15px;
     text-align: center;
   }

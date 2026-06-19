@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local MCP server config (references FIGMA_OAUTH_TOKEN from env)
+.mcp.json

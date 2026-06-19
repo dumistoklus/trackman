@@ -1,0 +1,21 @@
+.form-checkbox {
+    cursor: pointer;
+    user-select: none;
+}
+
+.form-checkbox__input {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid var(--brand-color);
+    margin: 0 8px 0 0;
+    transform: translateY(2px);
+    cursor: pointer;
+}
+
+.form-checkbox__input:checked {
+    background: url('data:image/svg+xml;,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%228%22%20height%3D%228%22%20fill%3D%22none%22%20viewBox%3D%220%200%208%208%22%3E%3Cpath%20fill%3D%22%23fff%22%20fill-rule%3D%22evenodd%22%20d%3D%22M3.126%207.847a.84.84%200%200%201-.685-.323L.22%204.854C.056%204.67%200%204.507%200%204.317c0-.422.319-.732.75-.732.249%200%20.43.087.593.285L3.11%206.034%206.596.54c.177-.28.362-.387.655-.387.43%200%20.749.31.749.727a.9.9%200%200%201-.164.5L3.828%207.49q-.244.359-.702.357%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E') no-repeat center, var(--brand-color);
+}

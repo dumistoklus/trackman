@@ -11,18 +11,20 @@ import "./Card.css";
 
 export type Props = {
     onDeleteClicked?: (id: string) => void;
+    href?: string;
 } & Course;
 
 export function Card({
-    title,
-    place,
+    city,
+    country,
     difficulty,
-    par,
     featured,
-    imageUrl,
     href,
     id,
+    imageUrl,
     onDeleteClicked,
+    par,
+    title,
 }: Props) {
     const className = ["card"];
     if (href) {
@@ -89,6 +91,8 @@ export function Card({
         }
     }, []);
 
+    const place = [city, country].filter(Boolean).join(", ");
+
     return (
         <div className={className.join(" ")} ref={cardRef}>
             {href && <Link to={href} className="card__link" ref={linkRef} />}
@@ -102,15 +106,17 @@ export function Card({
                 )}
 
                 <div className="card__image-wrapper">
-                    <img src={imageUrl} alt="" className="card__img" />
+                    {imageUrl && <img src={imageUrl} alt="" className="card__img" />}
                 </div>
 
                 <div className="card__info">
                     <h3 className="card__title">{title}</h3>
                     <p className="card__place">{place}</p>
                     <p className="card__meta">
-                        <span className="card__meta-block">Par: {par}</span>
-                        <span className="card__meta-block">Difficulty: {difficulty}</span>
+                        {par && <span className="card__meta-block">Par {par}</span>}
+                        {Boolean(difficulty) && (
+                            <span className="card__meta-block">Difficulty: {difficulty}/5</span>
+                        )}
                     </p>
                 </div>
             </div>

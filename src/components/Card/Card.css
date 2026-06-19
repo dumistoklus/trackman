@@ -5,10 +5,9 @@
 .card__wrapper {
     padding: 12px;
     border-radius: 16px;
-    line-height: 1.4;
     background: #fff;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-    transition: box-shadow 0.2s ease-in-out;
+    transition: box-shadow 0.1s ease-in-out;
 }
 
 .card--editable:hover .card__wrapper {
@@ -66,25 +65,28 @@
 
 .card__place {
     font-size: 13px;
-    color: #A0A0A0;
+    color: var(--text-tertiary-color);
     order: -1;
     text-overflow: ellipsis;
     overflow: hidden;
+    min-height: 1.4em;
 }
 
 .card__title {
     font-weight: 600;
     font-size: 13px;
-    color: #414141;
+    color: var(--text-primary-color);
     text-overflow: ellipsis;
     overflow: hidden;
+    min-height: 1.4em;
 }
 
 .card__meta {
     font-size: 11px;
-    color: #7B7B7B;
+    color: var(--text-secondary-color);
     text-overflow: ellipsis;
     overflow: hidden;
+    min-height: 1.4em;
 }
 
 .card__meta-block:not(:first-child)::before {

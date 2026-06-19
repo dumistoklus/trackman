@@ -1,19 +1,22 @@
 import { Route, Routes } from "react-router";
 import { PageCoursesList } from "./pages/PageCoursesList/PageCoursesList.tsx";
 import { SiteHeader } from "./components/SiteHeader/SiteHeader.tsx";
-import { CoursesProvider } from "./contexts/CoursesProvider.tsx";
+import { PageCoursesEdit } from "./pages/PageCoursesEdit/PageCourseEdit.tsx";
+import { PageCourseNew } from "./pages/PageCourseNew/PageCourseNew.tsx";
 
 function App() {
     return (
-        <CoursesProvider>
+        <>
             <SiteHeader />
 
             <main>
                 <Routes>
                     <Route path="/" element={<PageCoursesList />} />
+                    <Route path="/courses/new" element={<PageCourseNew />} />
+                    <Route path="/courses/:id" element={<PageCoursesEdit />} />
                 </Routes>
             </main>
-        </CoursesProvider>
+        </>
     );
 }
 

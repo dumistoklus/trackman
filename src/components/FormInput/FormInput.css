@@ -1,0 +1,42 @@
+.form-input {
+    position: relative;
+}
+
+.form-input__label {
+    position: absolute;
+    left: 13px;
+    top: 18px;
+    line-height: 14px;
+    pointer-events: none;
+    color: var(--text-tertiary-color);
+    font-size: 13px;
+    transition: all 0.1s ease-in-out;
+    user-select: none;
+}
+
+.form-input__input {
+    border: 1px solid var(--text-tertiary-color);
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    background: #fff;
+    line-height: 22px;
+    font-family: inherit;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.form-input__input[value]:not([value=""]) {
+    padding: 20px 12px 4px 12px;
+}
+
+.form-input__input:focus {
+    border-color: var(--brand-color);
+    box-shadow: 0 0 1px 0 var(--brand-color);
+    outline: none;
+}
+
+.form-input__input[value]:not([value=""]) + .form-input__label {
+    top: 8px;
+    font-size: 11px;
+}

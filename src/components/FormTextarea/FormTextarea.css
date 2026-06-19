@@ -1,0 +1,46 @@
+.form-textarea {
+    position: relative;
+}
+
+.form-textarea__label {
+    position: absolute;
+    left: 14px;
+    top: 17px;
+    line-height: 14px;
+    pointer-events: none;
+    color: var(--text-tertiary-color);
+    font-size: 13px;
+    transition: all 0.1s ease-in-out;
+    background: #ffffff;
+    user-select: none;
+}
+
+.form-textarea__input {
+    border: 1px solid var(--text-tertiary-color);
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    background: #fff;
+    line-height: 24px;
+    font-family: inherit;
+    font-size: 13px;
+    box-sizing: border-box;
+    resize: vertical;
+    display: block;
+    min-height: 120px;
+}
+
+.form-textarea__input:not(:empty) {
+    padding: 20px 12px 4px 12px;
+}
+
+.form-textarea__input:focus {
+    border-color: var(--brand-color);
+    outline: none;
+}
+
+.form-textarea__input:not(:empty) + .form-textarea__label {
+    top: 7px;
+    font-size: 11px;
+    left: 13px;
+}

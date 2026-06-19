@@ -4,8 +4,9 @@ import "./PageWrapper.css";
 
 type Props = {
     children: React.ReactNode;
+    className?: string;
 };
 
-export function PageWrapper({ children }: Props) {
-    return <div className="page-wrapper">{children}</div>;
+export function PageWrapper({ children, className }: Props) {
+    return <div className={`page-wrapper ${className || ""}`}>{children}</div>;
 }
