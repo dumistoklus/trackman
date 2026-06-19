@@ -1,8 +1,8 @@
 import * as React from "react";
 import CloseIcon from "../../assets/close.svg";
+import { Button } from "../Button/Button.tsx";
 
 import "./ModalDeleteCard.css";
-import { Button } from "../Button/Button.tsx";
 
 type Props = {
     onClose: () => void;

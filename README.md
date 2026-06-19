@@ -36,3 +36,4 @@ Sometimes, they use code that has errors to justify errors elsewhere in the proj
 
 ## Interesting places to see
 - `FormSelect` component and its styles: native implemnation.
+- `ModalDeleteCard` component and its styles: native focus trap and keyboard controls.
